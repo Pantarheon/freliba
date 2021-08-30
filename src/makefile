@@ -56,6 +56,7 @@ objects=601-2020.o \
 	colordials.o \
 	colorroller.o \
 	colors.o \
+	crimsonite.o \
 	diachromatic.o \
 	dichromatic.o \
 	erythropy.o \
@@ -107,6 +108,7 @@ libs=$(K)601-2020.so \
 	$(K)colordials.so \
 	$(K)colorroller.so \
 	$(K)colors.so \
+	$(K)crimsonite.so \
 	$(K)diachromatic.so \
 	$(K)dichromatic.so \
 	$(K)erythropy.so \
@@ -158,6 +160,7 @@ installs=install-601-2020 \
 	install-colordials \
 	install-colorroller \
 	install-colors \
+	install-crimsonite \
 	install-diachromatic \
 	install-dichromatic \
 	install-erythropy \
@@ -240,6 +243,9 @@ $(K)colorroller.so: colorroller.o
 	$(CC) $(LDFLAGS) $< -o $@ -lkoliba
 
 $(K)colors.so: colors.o
+	$(CC) $(LDFLAGS) $< -o $@ -lkoliba
+
+$(K)crimsonite.so: crimsonite.o
 	$(CC) $(LDFLAGS) $< -o $@ -lkoliba
 
 $(K)diachromatic.so: diachromatic.o
@@ -411,6 +417,10 @@ install-colorroller: $(K)colorroller.so
 install-colors: $(K)colors.so
 	install -p -s $? $(PREFIX)
 	touch install-colors
+
+install-crimsonite: $(K)crimsonite.so
+	install -p -s $? $(PREFIX)
+	touch install-crimsonite
 
 install-diachromatic: $(K)diachromatic.so
 	install -p -s $? $(PREFIX)
