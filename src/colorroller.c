@@ -10,6 +10,10 @@
 	the use of the ColorRoller effect in Koliba. It needs
 	to be linked dynamically using the -lkoliba switch
 	in Unix and its derivatives, or koliba.lib in Windows.
+
+	It also demonstrates the use of fast but low quality
+	preview, as well as the use of scaled FLUT introduced
+	in libkoliba v.0.4.
 */
 
 #include	<koliba.h>
@@ -49,6 +53,7 @@ typedef	struct _colorroller_instance {
 	KOLIBA_SLUT 		sLut;
 	KOLIBA_FLUT			fLut;
 	KOLIBA_FLAGS		flags;
+	KOLIBA_RGBA8PIXEL	palette[256];
 	double				imp;
 	double				angle;
 	double				atmo;
@@ -57,6 +62,7 @@ typedef	struct _colorroller_instance {
 	size_t				count;
 	unsigned char		inverse;
 	unsigned char		srgb;
+	unsigned char		preview;
 	unsigned char		changed;
 } colorroller_instance, *f0r_instance_t;
 
@@ -69,9 +75,9 @@ void f0r_get_plugin_info(f0r_plugin_info_t* info) {
 	info->color_model		= F0R_COLOR_MODEL_RGBA8888;
 	info->frei0r_version	= FREI0R_MAJOR_VERSION;
 	info->major_version		= 1;
-	info->minor_version		= 0;
-	info->num_params		= 7;
-	info->explanation		= "Create an color-rolled image.";
+	info->minor_version		= 1;
+	info->num_params		= 8;
+	info->explanation		= "Create a color-rolled image.";
 }
 
 int f0r_init() {return 1;}
@@ -94,12 +100,13 @@ f0r_instance_t f0r_construct(unsigned int width, unsigned int height) {
 		instance->efficacy		= 1.0;
 		instance->inverse		= 0;
 		instance->srgb			= 1;
+		instance->preview		= 0;
 
 		// Set this to 1, whenever a parameter changes.
 		// Set it back to 0 after recalculating sLut and fn.
 		// We start with it set true because our matrix
 		// is still not initialized.
-		instance->changed					= 1;
+		instance->changed		= 1;
 	}
 	return instance;
 }
@@ -144,6 +151,11 @@ void f0r_get_param_info(f0r_param_info_t* info, int param_index) {
 			info->name			= "sRGB";
 			info->type			= F0R_PARAM_BOOL;
 			info->explanation	= "Use with the sRGB color space.";
+			break;
+		case 7:
+			info->name			= "Quick Preview";
+			info->type			= F0R_PARAM_BOOL;
+			info->explanation	= "Show quick low quality preview. Turn off before rendering.";
 			break;
 	}
 }
@@ -198,6 +210,13 @@ void f0r_set_param_value(f0r_instance_t instance, f0r_param_t param, int param_i
 				instance->srgb		 = b;
 			}
 			break;
+		case 7:
+			d						 = *(double *)param;
+			b						 = (d >= 0.5);
+			if (instance->preview	!= b) {
+				instance->preview	 = b;
+			}
+			break;
 	}
 }
 
@@ -224,6 +243,9 @@ void f0r_get_param_value(f0r_instance_t instance, f0r_param_t param, int param_i
 		case 6:
 			*(double *)param		 = (double)instance->srgb;
 			break;
+		case 7:
+			*(double *)param		 = (double)instance->preview;
+			break;
 	}
 }
 
@@ -235,12 +257,6 @@ void f0r_update(f0r_instance_t instance, double time, const KOLIBA_RGBA8PIXEL *i
 
 		if (instance->efficacy == 0.0) memcpy(outframe, inframe, i*sizeof(KOLIBA_RGBA8PIXEL));
 		else {
-			if (instance->changed) {
-				KOLIBA_ColorRoller(&instance->sLut, instance->imp, instance->angle * 360.0, instance->atmo * 360.0, instance->fx, (instance->inverse) ? -instance->efficacy : instance->efficacy);
-				instance->flags = KOLIBA_FlutFlags(KOLIBA_ConvertSlutToFlut(&instance->fLut, &instance->vertices));
-				instance->changed	= 0;
-			}
-
 			if (instance->srgb) {
 				iconv = KOLIBA_SrgbByteToLinear;
 				oconv = KOLIBA_LinearByteToSrgb;
@@ -250,8 +266,17 @@ void f0r_update(f0r_instance_t instance, double time, const KOLIBA_RGBA8PIXEL *i
 				oconv = NULL;
 			}
 
-		for (; i; i--, inframe++, outframe++) {
-				KOLIBA_Rgba8Pixel(outframe, inframe, &instance->fLut, instance->flags, iconv, oconv)->a = inframe->a;
+			if (instance->changed) {
+				KOLIBA_ColorRoller(&instance->sLut, instance->imp, instance->angle * 360.0, instance->atmo * 360.0, instance->fx, (instance->inverse) ? -instance->efficacy : instance->efficacy);
+				instance->flags = KOLIBA_FlutFlags(KOLIBA_ConvertSlutToFlut(&instance->fLut, &instance->vertices));
+				KOLIBA_ScaleFlut(&instance->fLut, &instance->fLut, 255.0);
+				KOLIBA_SlutToRgba8Palette(instance->palette, &instance->sLut, iconv, oconv);
+				instance->changed	= 0;
+			}
+
+			if (instance->preview) KOLIBA_PaletteToRgba8Alpha(outframe, inframe, instance->palette, i);
+			else for (; i; i--, inframe++, outframe++) {
+				KOLIBA_ScaledRgba8Pixel(outframe, inframe, &instance->fLut, instance->flags, iconv, oconv)->a = inframe->a;
 			}
 		}
 	}
