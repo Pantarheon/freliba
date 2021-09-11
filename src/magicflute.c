@@ -7,7 +7,7 @@
 	http://www.pantarheon.org
 
 	This is a frei0r-compatible plug-in, demonstrating
-	the use of multiple LUTs in Koliba. It needs
+	the use of a sequence of two LUTs in Koliba. It needs
 	to be linked dynamically using the -lkoliba switch
 	in Unix and its derivatives, or koliba.lib in Windows.
 */
@@ -102,7 +102,7 @@ void f0r_get_plugin_info(f0r_plugin_info_t* info) {
 	info->color_model		= F0R_COLOR_MODEL_RGBA8888;
 	info->frei0r_version	= FREI0R_MAJOR_VERSION;
 	info->major_version		= 1;
-	info->minor_version		= 0;
+	info->minor_version		= 1;
 	info->num_params		= 11;
 	info->explanation		= "Crimsonite and Color Roller.";
 }
@@ -115,12 +115,16 @@ f0r_instance_t f0r_construct(unsigned int width, unsigned int height) {
 	f0r_instance_t	instance;
 
 	if ((instance = malloc(sizeof(magicflute_instance))) != NULL) {
+		// We set these values once and keep them that way for the
+		// life of this instance.
 		KOLIBA_SlutToVertices(instance->vertices, instance->sLut);
 		KOLIBA_SlutToVertices(instance->vertices+1, instance->sLut+1);
 		instance->ffLut[0].fLut	= instance->fLut;
 		instance->ffLut[1].fLut	= instance->fLut+1;
 		instance->count				= (size_t)width * (size_t)height;
 
+		// We set the initial values for these parameters,
+		// but allow the user to change them.
 		instance->lut				= 0.5;
 		instance->magenta			= 1.0;
 
@@ -342,7 +346,7 @@ void f0r_update(f0r_instance_t instance, double time, const KOLIBA_RGBA8PIXEL *i
 
 		// Changed or not, if both efficacies are 0, just do a quick copy
 		// of all input pixels to corresponding output pixels.
-		if ((instance->efficacy[0] == 0.0) && (instance->efficacy[0] == 0.0))
+		if ((instance->efficacy[0] == 0.0) && (instance->efficacy[1] == 0.0))
 			memcpy(outframe, inframe, i*sizeof(KOLIBA_RGBA8PIXEL));
 		else {
 			if (instance->changed[0]) {

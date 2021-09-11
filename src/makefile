@@ -68,6 +68,7 @@ objects=601-2020.o \
 	lifts.o \
 	lut.o \
 	lutty.o \
+	magicflute.o \
 	monofarba.o \
 	natcon.o \
 	objective.o \
@@ -120,6 +121,7 @@ libs=$(K)601-2020.so \
 	$(K)lifts.so \
 	$(K)lut.so \
 	$(K)lutty.so \
+	$(K)magicflute.so \
 	$(K)monofarba.so \
 	$(K)natcon.so \
 	$(K)objective.so \
@@ -172,6 +174,7 @@ installs=install-601-2020 \
 	install-lifts \
 	install-lut \
 	install-lutty \
+	install-magicflute \
 	install-monofarba \
 	install-natcon \
 	install-objective \
@@ -279,6 +282,9 @@ $(K)lut.so: lut.o
 	$(CC) $(LDFLAGS) $< -o $@ -lkoliba
 
 $(K)lutty.so: lutty.o
+	$(CC) $(LDFLAGS) $< -o $@ -lkoliba
+
+$(K)magicflute.so: magicflute.o
 	$(CC) $(LDFLAGS) $< -o $@ -lkoliba
 
 $(K)monofarba.so: monofarba.o
@@ -465,6 +471,10 @@ install-lut: $(K)lut.so
 install-lutty: $(K)lutty.so
 	install -p -s $? $(PREFIX)
 	touch install-lutty
+
+install-magicflute: $(K)magicflute.so
+	install -p -s $? $(PREFIX)
+	touch install-monofarba
 
 install-monofarba: $(K)monofarba.so
 	install -p -s $? $(PREFIX)
