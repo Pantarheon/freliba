@@ -117,7 +117,6 @@ void f0r_destruct(f0r_instance_t instance) {
 
 void f0r_get_param_info(f0r_param_info_t* info, int param_index) {
 	switch (param_index) {
-		// These control the first LUT.
 		case 0:
 			info->name			= "Color";
 			info->type			= F0R_PARAM_COLOR;
