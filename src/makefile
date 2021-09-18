@@ -83,6 +83,7 @@ objects=601-2020.o \
 	selene-nyx.o \
 	setfrange.o \
 	solidcolor.o \
+	strut.o \
 	tetramat.o \
 	tint.o \
 	tosrgb.o \
@@ -136,6 +137,7 @@ libs=$(K)601-2020.so \
 	$(K)selene-nyx.so \
 	$(K)setfrange.so \
 	$(K)solidcolor.so \
+	$(K)strut.so \
 	$(K)tetramat.so \
 	$(K)tint.so \
 	$(K)tosrgb.so \
@@ -189,6 +191,7 @@ installs=install-601-2020 \
 	install-selene-nyx \
 	install-setfrange \
 	install-solidcolor \
+	install-strut \
 	install-tetramat \
 	install-tint \
 	install-tosrgb \
@@ -327,6 +330,9 @@ $(K)setfrange.so: setfrange.o
 	$(CC) $(LDFLAGS) $< -o $@ -lkoliba
 
 $(K)solidcolor.so: solidcolor.o
+	$(CC) $(LDFLAGS) $< -o $@ -lkoliba
+
+$(K)strut.so: strut.o
 	$(CC) $(LDFLAGS) $< -o $@ -lkoliba
 
 $(K)tetramat.so: tetramat.o
@@ -531,6 +537,10 @@ install-setfrange: $(K)setfrange.so
 install-solidcolor: $(K)solidcolor.so
 	install -p -s $? $(PREFIX)
 	touch install-solidcolor
+
+install-strut: $(K)strut.so
+	install -p -s $? $(PREFIX)
+	touch install-strut
 
 install-tetramat: $(K)tetramat.so
 	install -p -s $? $(PREFIX)
