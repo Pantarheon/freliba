@@ -1,7 +1,7 @@
 /*
 	chblend.c
 
-	Copyright 2019 G. Adam Stanislav.
+	Copyright 2019-2022 G. Adam Stanislav.
 	All rights reserved.
 
 	http://www.pantarheon.org
@@ -191,26 +191,26 @@ void f0r_set_param_value(f0r_instance_t instance, f0r_param_t param, int param_i
 	unsigned char b;
 	if ((instance != NULL) && (param != NULL)) switch (param_index) {
 		case 0:
-			if (instance->blend.mat.red.r	!= *(double *)param) {
-				instance->blend.mat.red.r	 = *(double *)param;
+			if (instance->blend.mat.Red.r	!= *(double *)param) {
+				instance->blend.mat.Red.r	 = *(double *)param;
 				instance->changed			 = 1;
 			}
 			break;
 		case 1:
-			if (instance->blend.mat.red.g	!= *(double *)param) {
-				instance->blend.mat.red.g	 = *(double *)param;
+			if (instance->blend.mat.Red.g	!= *(double *)param) {
+				instance->blend.mat.Red.g	 = *(double *)param;
 				instance->changed			 = 1;
 			}
 			break;
 		case 2:
-			if (instance->blend.mat.red.b	!= *(double *)param) {
-				instance->blend.mat.red.b	 = *(double *)param;
+			if (instance->blend.mat.Red.b	!= *(double *)param) {
+				instance->blend.mat.Red.b	 = *(double *)param;
 				instance->changed			 = 1;
 			}
 			break;
 		case 3:
-			if (instance->blend.mat.red.o	!= *(double *)param) {
-				instance->blend.mat.red.o	 = *(double *)param;
+			if (instance->blend.mat.Red.o	!= *(double *)param) {
+				instance->blend.mat.Red.o	 = *(double *)param;
 				instance->changed			 = 1;
 			}
 			break;
@@ -222,24 +222,24 @@ void f0r_set_param_value(f0r_instance_t instance, f0r_param_t param, int param_i
 			}
 			break;
 		case 5:
-			if (instance->blend.mat.green.r	!= *(double *)param) {
-				instance->blend.mat.green.r	 = *(double *)param;
+			if (instance->blend.mat.Green.r	!= *(double *)param) {
+				instance->blend.mat.Green.r	 = *(double *)param;
 				instance->changed			 = 1;
 			}
 		case 6:
-			if (instance->blend.mat.green.g	!= *(double *)param) {
-				instance->blend.mat.green.g	 = *(double *)param;
+			if (instance->blend.mat.Green.g	!= *(double *)param) {
+				instance->blend.mat.Green.g	 = *(double *)param;
 				instance->changed			 = 1;
 			}
 		case 7:
-			if (instance->blend.mat.green.b	!= *(double *)param) {
-				instance->blend.mat.green.b	 = *(double *)param;
+			if (instance->blend.mat.Green.b	!= *(double *)param) {
+				instance->blend.mat.Green.b	 = *(double *)param;
 				instance->changed			 = 1;
 			}
 			break;
 		case 8:
-			if (instance->blend.mat.green.o	!= *(double *)param) {
-				instance->blend.mat.green.o	 = *(double *)param;
+			if (instance->blend.mat.Green.o	!= *(double *)param) {
+				instance->blend.mat.Green.o	 = *(double *)param;
 				instance->changed			 = 1;
 			}
 			break;
@@ -251,26 +251,26 @@ void f0r_set_param_value(f0r_instance_t instance, f0r_param_t param, int param_i
 			}
 			break;
 		case 10:
-			if (instance->blend.mat.blue.r	!= *(double *)param) {
-				instance->blend.mat.blue.r	 = *(double *)param;
+			if (instance->blend.mat.Blue.r	!= *(double *)param) {
+				instance->blend.mat.Blue.r	 = *(double *)param;
 				instance->changed			 = 1;
 			}
 			break;
 		case 11:
-			if (instance->blend.mat.blue.g	!= *(double *)param) {
-				instance->blend.mat.blue.g	 = *(double *)param;
+			if (instance->blend.mat.Blue.g	!= *(double *)param) {
+				instance->blend.mat.Blue.g	 = *(double *)param;
 				instance->changed			 = 1;
 			}
 			break;
 		case 12:
-			if (instance->blend.mat.blue.b	!= *(double *)param) {
-				instance->blend.mat.blue.b	 = *(double *)param;
+			if (instance->blend.mat.Blue.b	!= *(double *)param) {
+				instance->blend.mat.Blue.b	 = *(double *)param;
 				instance->changed			 = 1;
 			}
 			break;
 		case 13:
-			if (instance->blend.mat.blue.o	!= *(double *)param) {
-				instance->blend.mat.blue.o	 = *(double *)param;
+			if (instance->blend.mat.Blue.o	!= *(double *)param) {
+				instance->blend.mat.Blue.o	 = *(double *)param;
 				instance->changed			 = 1;
 			}
 			break;
@@ -303,46 +303,46 @@ void f0r_set_param_value(f0r_instance_t instance, f0r_param_t param, int param_i
 void f0r_get_param_value(f0r_instance_t instance, f0r_param_t param, int param_index) {
 	if ((instance != NULL) && (param != NULL)) switch(param_index) {
 		case 0:
-			*(double *)param				= instance->blend.mat.red.r;
+			*(double *)param				= instance->blend.mat.Red.r;
 			break;
 		case 1:
-			*(double *)param				= instance->blend.mat.red.g;
+			*(double *)param				= instance->blend.mat.Red.g;
 			break;
 		case 2:
-			*(double *)param				= instance->blend.mat.red.b;
+			*(double *)param				= instance->blend.mat.Red.b;
 			break;
 		case 3:
-			*(double *)param				= instance->blend.mat.red.o;
+			*(double *)param				= instance->blend.mat.Red.o;
 			break;
 		case 4:
 			*(double *)param				= instance->blend.nr;
 			break;
 		case 5:
-			*(double *)param				= instance->blend.mat.green.r;
+			*(double *)param				= instance->blend.mat.Green.r;
 			break;
 		case 6:
-			*(double *)param				= instance->blend.mat.green.g;
+			*(double *)param				= instance->blend.mat.Green.g;
 			break;
 		case 7:
-			*(double *)param				= instance->blend.mat.green.b;
+			*(double *)param				= instance->blend.mat.Green.b;
 			break;
 		case 8:
-			*(double *)param				= instance->blend.mat.green.o;
+			*(double *)param				= instance->blend.mat.Green.o;
 			break;
 		case 9:
 			*(double *)param				= instance->blend.ng;
 			break;
 		case 10:
-			*(double *)param				= instance->blend.mat.blue.r;
+			*(double *)param				= instance->blend.mat.Blue.r;
 			break;
 		case 11:
-			*(double *)param				= instance->blend.mat.blue.g;
+			*(double *)param				= instance->blend.mat.Blue.g;
 			break;
 		case 12:
-			*(double *)param				= instance->blend.mat.blue.b;
+			*(double *)param				= instance->blend.mat.Blue.b;
 			break;
 		case 13:
-			*(double *)param				= instance->blend.mat.blue.o;
+			*(double *)param				= instance->blend.mat.Blue.o;
 			break;
 		case 14:
 			*(double *)param				= instance->blend.nb;
