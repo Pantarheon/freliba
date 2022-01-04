@@ -1,7 +1,7 @@
 /*
 	vivid.c
 
-	Copyright 2019 G. Adam Stanislav.
+	Copyright 2019-2022 G. Adam Stanislav.
 	All rights reserved.
 
 	http://www.pantarheon.org
@@ -153,7 +153,7 @@ void f0r_update(f0r_instance_t instance, double time, const KOLIBA_RGBA8PIXEL *i
 					(double *)&vertex,
 					(double *)&red,
 					-instance->efficacy,
-					(double *)&KOLIBA_IdentitySlut.red,
+					(double *)&KOLIBA_IdentitySlut.Red,
 					sizeof(KOLIBA_VERTEX)/sizeof(double)
 				)));
 			}
