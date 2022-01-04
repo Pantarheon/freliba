@@ -192,19 +192,19 @@ void f0r_update(f0r_instance_t instance, double time, const KOLIBA_RGBA8PIXEL *i
 
 		if (instance->changed) {
 			KOLIBA_Interpolate(
-				(double *)&instance->sLut.red,
+				(double *)&instance->sLut.Red,
 				(double *)&instance->red,
 				(instance->invert) ? -instance->efficacy : instance->efficacy,
-				(double *)&KOLIBA_IdentitySlut.red,
+				(double *)&KOLIBA_IdentitySlut.Red,
 				sizeof(KOLIBA_VERTEX)/sizeof(double)
 			);
 			KOLIBA_ApplyErythropy(&instance->sLut, &instance->sLut);
 			KOLIBA_ConvertSlutToFlut(&instance->fLut, &instance->vert);
 			instance->flags		= KOLIBA_FlutFlags(&instance->fLut);
 
-			instance->copy		= (((instance->sLut.red.r == 1.0) &&
-									   (instance->sLut.red.g == 0.0) &&
-									   (instance->sLut.red.b == 0.0)) ||
+			instance->copy		= (((instance->sLut.Red.r == 1.0) &&
+									   (instance->sLut.Red.g == 0.0) &&
+									   (instance->sLut.Red.b == 0.0)) ||
 									   (instance->efficacy == 0.0)) ?
 									   0 : 1;
 
