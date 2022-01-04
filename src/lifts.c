@@ -256,9 +256,9 @@ void f0r_update(f0r_instance_t instance, double time, const KOLIBA_RGBA8PIXEL *i
 
 		if (instance->changed) {
 			KOLIBA_ApplyEfficacies(&instance->sLut, &sLut, &instance->eLut, &KOLIBA_IdentitySlut);
-			instance->sLut.white.r = instance->eLut.white;
-			instance->sLut.white.g = instance->eLut.white;
-			instance->sLut.white.b = instance->eLut.white;
+			instance->sLut.White.r = instance->eLut.white;
+			instance->sLut.White.g = instance->eLut.white;
+			instance->sLut.White.b = instance->eLut.white;
 			KOLIBA_ConvertSlutToFlut(&instance->fLut, &instance->vert);
 			instance->flags		= KOLIBA_FlutFlags(&instance->fLut);
 			instance->changed	= 0;
