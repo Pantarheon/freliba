@@ -1,7 +1,7 @@
 /*
 	ranges.c
 
-	Copyright 2019 G. Adam Stanislav.
+	Copyright 2019-2022 G. Adam Stanislav.
 	All rights reserved.
 
 	http://www.pantarheon.org
@@ -211,38 +211,38 @@ void f0r_set_param_value(f0r_instance_t instance, f0r_param_t param, int param_i
 			}
 			break;
 		case 6:
-			if (instance->sLut.black.r	!= *(double *)param) {
-				instance->sLut.black.r	 = *(double *)param;
+			if (instance->sLut.Black.r	!= *(double *)param) {
+				instance->sLut.Black.r	 = *(double *)param;
 				instance->changed		 = 1;
 			}
 			break;
 		case 7:
-			if (instance->sLut.black.g	!= *(double *)param) {
-				instance->sLut.black.g	 = *(double *)param;
+			if (instance->sLut.Black.g	!= *(double *)param) {
+				instance->sLut.Black.g	 = *(double *)param;
 				instance->changed		 = 1;
 			}
 			break;
 		case 8:
-			if (instance->sLut.black.b	!= *(double *)param) {
-				instance->sLut.black.b	 = *(double *)param;
+			if (instance->sLut.Black.b	!= *(double *)param) {
+				instance->sLut.Black.b	 = *(double *)param;
 				instance->changed		 = 1;
 			}
 			break;
 		case 9:
-			if (instance->sLut.white.r	!= *(double *)param) {
-				instance->sLut.white.r	 = *(double *)param;
+			if (instance->sLut.White.r	!= *(double *)param) {
+				instance->sLut.White.r	 = *(double *)param;
 				instance->changed		 = 1;
 			}
 			break;
 		case 10:
-			if (instance->sLut.white.g	!= *(double *)param) {
-				instance->sLut.white.g	 = *(double *)param;
+			if (instance->sLut.White.g	!= *(double *)param) {
+				instance->sLut.White.g	 = *(double *)param;
 				instance->changed		 = 1;
 			}
 			break;
 		case 11:
-			if (instance->sLut.white.b	!= *(double *)param) {
-				instance->sLut.white.b	 = *(double *)param;
+			if (instance->sLut.White.b	!= *(double *)param) {
+				instance->sLut.White.b	 = *(double *)param;
 				instance->changed		 = 1;
 			}
 			break;
@@ -273,22 +273,22 @@ void f0r_get_param_value(f0r_instance_t instance, f0r_param_t param, int param_i
 			*(double *)param = (double)instance->to.b;
 			break;
 		case 6:
-			*(double *)param = (double)instance->sLut.black.r;
+			*(double *)param = (double)instance->sLut.Black.r;
 			break;
 		case 7:
-			*(double *)param = (double)instance->sLut.black.g;
+			*(double *)param = (double)instance->sLut.Black.g;
 			break;
 		case 8:
-			*(double *)param = (double)instance->sLut.black.b;
+			*(double *)param = (double)instance->sLut.Black.b;
 			break;
 		case 9:
-			*(double *)param = (double)instance->sLut.white.r;
+			*(double *)param = (double)instance->sLut.White.r;
 			break;
 		case 10:
-			*(double *)param = (double)instance->sLut.white.g;
+			*(double *)param = (double)instance->sLut.White.g;
 			break;
 		case 11:
-			*(double *)param = (double)instance->sLut.white.b;
+			*(double *)param = (double)instance->sLut.White.b;
 			break;
 		case 12:
 			*(double *)param = (double)instance->srgb;
