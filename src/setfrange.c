@@ -1,7 +1,7 @@
 /*
 	setfrange.c
 
-	Copyright 2019 G. Adam Stanislav.
+	Copyright 2019-2022 G. Adam Stanislav.
 	All rights reserved.
 
 	http://www.pantarheon.org
@@ -236,8 +236,8 @@ void f0r_update(f0r_instance_t instance, double time, const KOLIBA_RGBA8PIXEL *i
 				instance->vert.white = (KOLIBA_VERTEX *)&instance->to;
 			}
 			else {
-				instance->vert.black = &instance->sLut.black;
-				instance->vert.white = &instance->sLut.white;
+				instance->vert.black = &instance->sLut.Black;
+				instance->vert.white = &instance->sLut.White;
 			}
 			instance->copy	= KOLIBA_IsIdentityFlut(KOLIBA_ConvertSlutToFlut(&instance->fLut, KOLIBA_FarbaRange(&instance->vert, &instance->from, &instance->to)));
 			instance->flags	= KOLIBA_FlutFlags(&instance->fLut);
