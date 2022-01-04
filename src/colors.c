@@ -319,9 +319,9 @@ void f0r_update(f0r_instance_t instance, double time, const KOLIBA_RGBA8PIXEL *i
 			KOLIBA_ConvertMatrixToFlut(&instance->fLut[0], &mat);
 			instance->ffLut[0].flags = KOLIBA_FlutFlags(&instance->fLut[0]);
 			KOLIBA_MatrixGain(&mat, NULL,(KOLIBA_VERTEX *)&instance->gain);
-			mat.red.o	= instance->offset.x;
-			mat.green.o	= instance->offset.y;
-			mat.blue.o	= instance->offset.z;
+			mat.Red.o	= instance->offset.x;
+			mat.Green.o	= instance->offset.y;
+			mat.Blue.o	= instance->offset.z;
 			KOLIBA_ConvertMatrixToFlut(&instance->fLut[1], &mat);
 			instance->ffLut[1].flags = KOLIBA_FlutFlags(&instance->fLut[1]);
 			instance->changed	= 0;
