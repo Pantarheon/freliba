@@ -351,7 +351,7 @@ void f0r_update(f0r_instance_t instance, double time, const KOLIBA_RGBA8PIXEL *i
 		else {
 			if (instance->changed[0]) {
 				KOLIBA_InterpolateSluts(&instance->sLut[0], sLut[0], instance->lut, sLut[1]);
-				KOLIBA_Interpolate((double *)&instance->sLut[0].magenta, (double *)vrt, instance->magenta, (double *)&instance->sLut[0].magenta, 3);
+				KOLIBA_Interpolate((double *)&instance->sLut[0].Magenta, (double *)vrt, instance->magenta, (double *)&instance->sLut[0].Magenta, 3);
 				KOLIBA_SlutEfficacy(&instance->sLut[0], &instance->sLut[0], (instance->inverse[0]) ? -instance->efficacy[0] : instance->efficacy[0]);
 				instance->ffLut[0].flags = KOLIBA_FlutFlags(KOLIBA_ConvertSlutToFlut(&instance->fLut[0], &instance->vertices[0]));
 				instance->changed[0]	 = 0;
