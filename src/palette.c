@@ -215,98 +215,98 @@ void f0r_set_param_value(f0r_instance_t instance, const f0r_param_t param, int p
 
 	if ((instance != NULL) && (param != NULL)) switch (param_index) {
 		case 0:
-			if (!KOLIBA_PixelIsVertex((KOLIBA_VERTEX *)&instance->palette.black, (KOLIBA_PIXEL *)param)) {
-				KOLIBA_PixelToVertex((KOLIBA_VERTEX *)&instance->palette.black, (KOLIBA_PIXEL *)param, 1);
+			if (!KOLIBA_PixelIsVertex((KOLIBA_VERTEX *)&instance->palette.Black, (KOLIBA_PIXEL *)param)) {
+				KOLIBA_PixelToVertex((KOLIBA_VERTEX *)&instance->palette.Black, (KOLIBA_PIXEL *)param, 1);
 				instance->changed						 = 1;
 			}
 			break;
 		case 1:
-			if (instance->palette.black.efficacy		!= *(double *)param) {
-				instance->palette.black.efficacy		 = *(double *)param;
+			if (instance->palette.Black.efficacy		!= *(double *)param) {
+				instance->palette.Black.efficacy		 = *(double *)param;
 				instance->changed						 = 1;
 			}
 			break;
 		case 2:
-			if (!KOLIBA_PixelIsVertex((KOLIBA_VERTEX *)&instance->palette.white, (KOLIBA_PIXEL *)param)) {
-				KOLIBA_PixelToVertex((KOLIBA_VERTEX *)&instance->palette.white, (KOLIBA_PIXEL *)param, 1);
+			if (!KOLIBA_PixelIsVertex((KOLIBA_VERTEX *)&instance->palette.White, (KOLIBA_PIXEL *)param)) {
+				KOLIBA_PixelToVertex((KOLIBA_VERTEX *)&instance->palette.White, (KOLIBA_PIXEL *)param, 1);
 				instance->changed						 = 1;
 			}
 			break;
 		case 3:
-			if (instance->palette.white.efficacy		!= *(double *)param) {
-				instance->palette.white.efficacy		 = *(double *)param;
+			if (instance->palette.White.efficacy		!= *(double *)param) {
+				instance->palette.White.efficacy		 = *(double *)param;
 				instance->changed						 = 1;
 			}
 			break;
 		case 4:
-			if (!KOLIBA_PixelIsVertex((KOLIBA_VERTEX *)&instance->palette.red, (KOLIBA_PIXEL *)param)) {
-				KOLIBA_PixelToVertex((KOLIBA_VERTEX *)&instance->palette.red, (KOLIBA_PIXEL *)param, 1);
+			if (!KOLIBA_PixelIsVertex((KOLIBA_VERTEX *)&instance->palette.Red, (KOLIBA_PIXEL *)param)) {
+				KOLIBA_PixelToVertex((KOLIBA_VERTEX *)&instance->palette.Red, (KOLIBA_PIXEL *)param, 1);
 				instance->changed						 = 1;
 			}
 			break;
 		case 5:
-			if (instance->palette.red.efficacy			!= *(double *)param) {
-				instance->palette.red.efficacy			 = *(double *)param;
+			if (instance->palette.Red.efficacy			!= *(double *)param) {
+				instance->palette.Red.efficacy			 = *(double *)param;
 				instance->changed						 = 1;
 			}
 			break;
 		case 6:
-			if (!KOLIBA_PixelIsVertex((KOLIBA_VERTEX *)&instance->palette.green, (KOLIBA_PIXEL *)param)) {
-				KOLIBA_PixelToVertex((KOLIBA_VERTEX *)&instance->palette.green, (KOLIBA_PIXEL *)param, 1);
+			if (!KOLIBA_PixelIsVertex((KOLIBA_VERTEX *)&instance->palette.Green, (KOLIBA_PIXEL *)param)) {
+				KOLIBA_PixelToVertex((KOLIBA_VERTEX *)&instance->palette.Green, (KOLIBA_PIXEL *)param, 1);
 				instance->changed						 = 1;
 			}
 			break;
 		case 7:
-			if (instance->palette.green.efficacy		!= *(double *)param) {
-				instance->palette.green.efficacy		 = *(double *)param;
+			if (instance->palette.Green.efficacy		!= *(double *)param) {
+				instance->palette.Green.efficacy		 = *(double *)param;
 				instance->changed						 = 1;
 			}
 			break;
 		case 8:
-			if (!KOLIBA_PixelIsVertex((KOLIBA_VERTEX *)&instance->palette.blue, (KOLIBA_PIXEL *)param)) {
-				KOLIBA_PixelToVertex((KOLIBA_VERTEX *)&instance->palette.blue, (KOLIBA_PIXEL *)param, 1);
+			if (!KOLIBA_PixelIsVertex((KOLIBA_VERTEX *)&instance->palette.Blue, (KOLIBA_PIXEL *)param)) {
+				KOLIBA_PixelToVertex((KOLIBA_VERTEX *)&instance->palette.Blue, (KOLIBA_PIXEL *)param, 1);
 				instance->changed						 = 1;
 			}
 			break;
 		case 9:
-			if (instance->palette.blue.efficacy			!= *(double *)param) {
-				instance->palette.blue.efficacy			 = *(double *)param;
+			if (instance->palette.Blue.efficacy			!= *(double *)param) {
+				instance->palette.Blue.efficacy			 = *(double *)param;
 				instance->changed						 = 1;
 			}
 			break;
 		case 10:
-			if (!KOLIBA_PixelIsVertex((KOLIBA_VERTEX *)&instance->palette.cyan, (KOLIBA_PIXEL *)param)) {
-				KOLIBA_PixelToVertex((KOLIBA_VERTEX *)&instance->palette.cyan, (KOLIBA_PIXEL *)param, 1);
+			if (!KOLIBA_PixelIsVertex((KOLIBA_VERTEX *)&instance->palette.Cyan, (KOLIBA_PIXEL *)param)) {
+				KOLIBA_PixelToVertex((KOLIBA_VERTEX *)&instance->palette.Cyan, (KOLIBA_PIXEL *)param, 1);
 				instance->changed						 = 1;
 			}
 			break;
 		case 11:
-			if (instance->palette.cyan.efficacy			!= *(double *)param) {
-				instance->palette.cyan.efficacy			 = *(double *)param;
+			if (instance->palette.Cyan.efficacy			!= *(double *)param) {
+				instance->palette.Cyan.efficacy			 = *(double *)param;
 				instance->changed						 = 1;
 			}
 			break;
 		case 12:
-			if (!KOLIBA_PixelIsVertex((KOLIBA_VERTEX *)&instance->palette.magenta, (KOLIBA_PIXEL *)param)) {
-				KOLIBA_PixelToVertex((KOLIBA_VERTEX *)&instance->palette.magenta, (KOLIBA_PIXEL *)param, 1);
+			if (!KOLIBA_PixelIsVertex((KOLIBA_VERTEX *)&instance->palette.Magenta, (KOLIBA_PIXEL *)param)) {
+				KOLIBA_PixelToVertex((KOLIBA_VERTEX *)&instance->palette.Magenta, (KOLIBA_PIXEL *)param, 1);
 				instance->changed						 = 1;
 			}
 			break;
 		case 13:
-			if (instance->palette.magenta.efficacy		!= *(double *)param) {
-				instance->palette.magenta.efficacy		 = *(double *)param;
+			if (instance->palette.Magenta.efficacy		!= *(double *)param) {
+				instance->palette.Magenta.efficacy		 = *(double *)param;
 				instance->changed						 = 1;
 			}
 			break;
 		case 14:
-			if (!KOLIBA_PixelIsVertex((KOLIBA_VERTEX *)&instance->palette.yellow, (KOLIBA_PIXEL *)param)) {
-				KOLIBA_PixelToVertex((KOLIBA_VERTEX *)&instance->palette.yellow, (KOLIBA_PIXEL *)param, 1);
+			if (!KOLIBA_PixelIsVertex((KOLIBA_VERTEX *)&instance->palette.Yellow, (KOLIBA_PIXEL *)param)) {
+				KOLIBA_PixelToVertex((KOLIBA_VERTEX *)&instance->palette.Yellow, (KOLIBA_PIXEL *)param, 1);
 				instance->changed						 = 1;
 			}
 			break;
 		case 15:
-			if (instance->palette.yellow.efficacy		!= *(double *)param) {
-				instance->palette.yellow.efficacy		 = *(double *)param;
+			if (instance->palette.Yellow.efficacy		!= *(double *)param) {
+				instance->palette.Yellow.efficacy		 = *(double *)param;
 				instance->changed						 = 1;
 			}
 			break;
@@ -337,52 +337,52 @@ void f0r_set_param_value(f0r_instance_t instance, const f0r_param_t param, int p
 void f0r_get_param_value(f0r_instance_t instance, f0r_param_t param, int param_index) {
 	if ((instance != NULL) && (param != NULL)) switch(param_index) {
 		case 0:
-			KOLIBA_VertexToPixel((KOLIBA_PIXEL *)param, (KOLIBA_VERTEX *)&instance->palette.black, 1);
+			KOLIBA_VertexToPixel((KOLIBA_PIXEL *)param, (KOLIBA_VERTEX *)&instance->palette.Black, 1);
 			break;
 		case 1:
-			*(double *)param				= instance->palette.black.efficacy;
+			*(double *)param				= instance->palette.Black.efficacy;
 			break;
 		case 2:
-			KOLIBA_VertexToPixel((KOLIBA_PIXEL *)param, (KOLIBA_VERTEX *)&instance->palette.white, 1);
+			KOLIBA_VertexToPixel((KOLIBA_PIXEL *)param, (KOLIBA_VERTEX *)&instance->palette.White, 1);
 			break;
 		case 3:
-			*(double *)param				= instance->palette.white.efficacy;
+			*(double *)param				= instance->palette.White.efficacy;
 			break;
 		case 4:
-			KOLIBA_VertexToPixel((KOLIBA_PIXEL *)param, (KOLIBA_VERTEX *)&instance->palette.red, 1);
+			KOLIBA_VertexToPixel((KOLIBA_PIXEL *)param, (KOLIBA_VERTEX *)&instance->palette.Red, 1);
 			break;
 		case 5:
-			*(double *)param				= instance->palette.red.efficacy;
+			*(double *)param				= instance->palette.Red.efficacy;
 			break;
 		case 6:
-			KOLIBA_VertexToPixel((KOLIBA_PIXEL *)param, (KOLIBA_VERTEX *)&instance->palette.green, 1);
+			KOLIBA_VertexToPixel((KOLIBA_PIXEL *)param, (KOLIBA_VERTEX *)&instance->palette.Green, 1);
 			break;
 		case 7:
-			*(double *)param				= instance->palette.green.efficacy;
+			*(double *)param				= instance->palette.Green.efficacy;
 			break;
 		case 8:
-			KOLIBA_VertexToPixel((KOLIBA_PIXEL *)param, (KOLIBA_VERTEX *)&instance->palette.blue, 1);
+			KOLIBA_VertexToPixel((KOLIBA_PIXEL *)param, (KOLIBA_VERTEX *)&instance->palette.Blue, 1);
 			break;
 		case 9:
-			*(double *)param				= instance->palette.blue.efficacy;
+			*(double *)param				= instance->palette.Blue.efficacy;
 			break;
 		case 10:
-			KOLIBA_VertexToPixel((KOLIBA_PIXEL *)param, (KOLIBA_VERTEX *)&instance->palette.cyan, 1);
+			KOLIBA_VertexToPixel((KOLIBA_PIXEL *)param, (KOLIBA_VERTEX *)&instance->palette.Cyan, 1);
 			break;
 		case 11:
-			*(double *)param				= instance->palette.cyan.efficacy;
+			*(double *)param				= instance->palette.Cyan.efficacy;
 			break;
 		case 12:
-			KOLIBA_VertexToPixel((KOLIBA_PIXEL *)param, (KOLIBA_VERTEX *)&instance->palette.magenta, 1);
+			KOLIBA_VertexToPixel((KOLIBA_PIXEL *)param, (KOLIBA_VERTEX *)&instance->palette.Magenta, 1);
 			break;
 		case 13:
-			*(double *)param				= instance->palette.magenta.efficacy;
+			*(double *)param				= instance->palette.Magenta.efficacy;
 			break;
 		case 14:
-			KOLIBA_VertexToPixel((KOLIBA_PIXEL *)param, (KOLIBA_VERTEX *)&instance->palette.yellow, 1);
+			KOLIBA_VertexToPixel((KOLIBA_PIXEL *)param, (KOLIBA_VERTEX *)&instance->palette.Yellow, 1);
 			break;
 		case 15:
-			*(double *)param				= instance->palette.yellow.efficacy;
+			*(double *)param				= instance->palette.Yellow.efficacy;
 			break;
 		case 16:
 			*(double *)param				= instance->palette.efficacy;
